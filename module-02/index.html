@@ -85,7 +85,11 @@
     <li>Visit my <a href='#'>mapping portfolio</a>.</li>
 </ul>
     </section>
-	<script>
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    
+    <script>
         document.querySelector('h1').innerHTML = 'web mapping is sweet!';
         var map = document.getElementById('map');
         map.style.background = '#4d4a9f';
@@ -93,9 +97,28 @@
         this.style.width = '400px';   
         });
         var newListItem = document.createElement('li');
-newListItem.innerHTML = "list item 4";
-document.querySelector('ul').appendChild(newListItem);
+        newListItem.innerHTML = "list item 4";
+        document.querySelector('ul').appendChild(newListItem);
         console.log("hello map");
+        var options = {
+    center: [38.0406, -84.5037],
+    zoom: 12
+}
+
+var map = L.map('map', options);
+
+var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+    subdomains: 'abcd',
+    maxZoom: 19
+}).addTo(map);
+
+var message = 'Lexington is awesome!';
+
+L.marker(map.getCenter())
+    .bindTooltip(message)
+    .addTo(map)
+    .openTooltip();
 	</script>
     
 </body>
