@@ -42,6 +42,7 @@
         p {
             font-size: 1em;
             line-height: 1.5em;
+            text-indent: 40px;
         }
 
         a {
@@ -77,8 +78,8 @@
     
     <section>
         <h2>About This Map</h2>
-        <p>Map Authored by John Davis</p>
-        <p>Additional information about <a href="http://leafletjs.com/">the data</a> and map goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus.</p>
+        Map Authored by John Davis
+        <p>Planned and developed under the direction of William Penn in 1682, Philadelphia has grown into the 5<sup>th</sup> largest city in the United States. The Delaware and Schuylkill Rivers serve as the primary boundaries of the center city area where five open space public parks were planned and include Center Square, Logan Square, Franklin Square, Washington Square, and Rittenhouse Square.  These public squares serve as a natural refuge or get away from the hustle of city life. Other parks in the city include Fairmount Park, the world's largest publicly landscaped park, and Independence National Historic Park, home to the Liberty Bell and Independence Hall. Philadelphia also sits on the Atlantic Seaboard Fall Line between the Atlantic coastal plain and the Piedmont of the United States. The rapids of the Schuylkill River and Fairmount Dam represent the location of the Fall Line on the western side of center city. From its beginning as a temporary United States capital, to a city of over 1.5 million people enjoying the luxuries of open space parks, restaurants, tourism, the arts, and sports; Philadelphia boasts a bevy of activities and events for all to enjoy, especially situated between two rivers.</p>
 
     <ul>
     <li>See my projects on GitHub: <a href="https://github.com/newmapsplus">New Maps Plus</a></li>
@@ -91,7 +92,7 @@
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
     
     <script>
-        document.querySelector('h1').innerHTML = 'A City Between Two Rivers: A Philadelphia Story';
+        document.querySelector('h1').innerHTML = 'Between Two Rivers: A Philadelphia Story';
         var map = document.getElementById('map');
         map.style.background = '#4d4a9f';
         map.addEventListener('click', function() {
@@ -104,7 +105,7 @@
         
         var options = {
     center: [39.95228, -75.16245],
-    zoom: 11
+    zoom: 12
 }
 
 var map = L.map('map', options);
