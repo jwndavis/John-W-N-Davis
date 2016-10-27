@@ -74,6 +74,56 @@ console.log(1 != 1); // output is false because 1 is 1
     var cityPop = 308428;
     console.log("The population of Lexington is ", cityPop);
     
+    var cities = []; //creates an empty array
+    console.log(cities);
+    var cities = ["Frankfort", "Louisville", "Lexington"];
+    console.log(cities);
+    var populations = [25527, 756832, 308428];
+    console.log(populations);
+    var populations = ["Frankfort", 756832, false];
+    console.log(populations);
+    
+    var twoDArray = [
+        ["Frankfort", "Louisville", "Lexington"],
+        [25527, 756832, 308428],
+        ["Frankfort", 756832, false]
+    ];
+    console.log(twoDArray);
+    
+    var cities = ["Frankfort", "Louisville", "Lexington"];
+    console.log(cities[0]); // outputs the String "Frankfort"
+    console.log(cities[1]); // outputs the String "Louisville"
+    console.log(cities[2]); // outputs the String "Lexington"
+    console.log(cities[3]); // outputs undefined
+    
+    var twoDArray = [
+        ["Frankfort", "Louisville", "Lexington"],
+        [25527, 756832, 308428],
+        ["Frankfort", 756832, false]
+    ];
+    console.log(twoDArray[0][2]); //output will be Lexington
+    console.log(twoDArray[2][1]); //output will be 756832
+    
+    var years = [2010, 2011, 2022, 2013, 2014];
+    console.log(years);
+    
+    var years = [2010, 2011, 2022, 2013, 2014, 2015];
+    console.log(years);
+    years[2] = 2012;
+    console.log(years); // we can see that the array has been updated!
+    
+    var counties = [];
+    console.log(counties); // output is an empty array
+    counties[0] = "Adair",
+    console.log(counties); // output is a single item array ["Adair]
+    counties[1] = "Allen";
+    console.log(counties); // output is now ["Adair", "Allen"]
+    
+    counties[5] = "Anderson";
+    console.log(counties); // what is this output?
+    
+    
+    
 </script>
     
 </body>
