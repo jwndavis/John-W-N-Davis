@@ -93,25 +93,52 @@
 		var tiles = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
 });
-		// add tiles to map
+        
         map.addLayer(tiles);
             
-		// variable to hold string value of city name
 		var cityName = "Denver";
 		
-		// variable to hold number value of city population
 		var cityPopulation = 649495;
         
-		// build a string with HTML tags and content
+        var cities = ["Paris", "Hong Kong", "Sydney"]
+        
+        var cityCoords = [
+            ["Paris", "Hong Kong", "Sydney"]
+            [48.86319, 22.15, -33.8696]
+            [2.339754, 114.10, 151.207]
+        ]
+        
+        var cityPops = [
+            ["Paris", "Hong Kong", "Sydney"]
+            [2230000, 7310000, 4920000]
+        ]
+        
+        var cityCapital = [
+            ["Paris", "Hong Kong", "Sydney"]
+            [true, false, false]
+        ]
+        
+        
+    for (var cities = 0; cities < 3; cities++) {
+        console.log(cities);
+    }
+    console.log("after the for loop");
+        
         var popup = "<b>" + cityName + "</b><br>" +
                     "<b>population</b>: " + cityPopulation;
+        
+       
 
         // create a Leaflet marker at the coordinates of Denver, CO
 		// add it to the map
 		// and bind the popup content to the marker.
-        L.marker([39.74, -104.99]).addTo(map)
+        
+        var cityCoords = [39.74, -104.99];
+        
+        L.marker(cityCoords).addTo(map)
 			.bindPopup(popup);
+        
               
     </script>
     
-</body>
+</body> 
