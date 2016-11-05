@@ -94,38 +94,7 @@
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
 });
         
-        map.addLayer(tiles);
-            
-		var cityName = "Denver";
-		
-		var cityPopulation = 649495;
-        
-        var cities = ["Paris", "Hong Kong", "Sydney"]
-        
-        var cityCoords = [
-            ["Paris", "Hong Kong", "Sydney"]
-            [48.86319, 22.15, -33.8696]
-            [2.339754, 114.10, 151.207]
-        ]
-        
-        var cityPops = [
-            ["Paris", "Hong Kong", "Sydney"]
-            [2230000, 7310000, 4920000]
-        ]
-        
-        var cityCapital = [
-            ["Paris", "Hong Kong", "Sydney"]
-            [true, false, false]
-        ]
-        
-        
-    for (var cities = 0; cities < 3; cities++) {
-        console.log(cities);
-    }
-    console.log("after the for loop");
-        
-        var popup = "<b>" + cityName + "</b><br>" +
-                    "<b>population</b>: " + cityPopulation;
+       
         
        
 
@@ -133,12 +102,75 @@
 		// add it to the map
 		// and bind the popup content to the marker.
         
+        var cityCoords = cityCoords;
+        
         var cityCoords = [39.74, -104.99];
+        
+        map.addLayer(tiles);
+            
+		var cityName = "Denver";
+		
+		var cityPopulation = 649495;
+        
+        var popup = "<b>" + cityName + "</b><br>" +
+                    "<b>Population</b>: " + (cityPopulation.toLocaleString(cityPopulation));
         
         L.marker(cityCoords).addTo(map)
 			.bindPopup(popup);
         
+        
+        
+        
+        var cities = ["Paris", "Hong Kong", "Sydney"]
+            
+        var cityCoords = [
+            [48.86319, 2.339754],
+            [22.15, 114.10],
+            [-33.8696, 151.207]
+        ]
+        
+        var cityPops = [2230000, 7310000, 4920000]
+        
+        var cityCapital = [true, false, false]
+    
+        
+        var city0popup = "<b>" + cities[0] + "</b><br>" +
+                    "<b>Population</b>: " + (cityPops[0].toLocaleString(cityPops[0]));
+        if(cityCapital[0] == true) {
+            city0popup += "<br> is the Capital City";
+        }
+        L.marker(cityCoords[0]).addTo(map)
+			.bindPopup(city0popup);
+        
+        
+        
+        var city1popup = "<b>" + cities[1] + "</b><br>" +
+                    "<b>Population</b>: " + (cityPops[1].toLocaleString(cityPops[1]));
+        if(cityCapital[1] === true) {
+            city1popup += "<br>is the Capital City";
+        }
+        L.marker(cityCoords[1]).addTo(map)
+			.bindPopup(city1popup);
+        
+        
+        
+        var city2popup = "<b>" + cities[2] + "</b><br>" +
+                    "<b>Population</b>: " + (cityPops[2].toLocaleString(cityPops[2]));
+        if(cityCapital[2] === true) {
+            city2popup += "<br>is the Capital City";
+        }
+        L.marker(cityCoords[2]).addTo(map)
+			.bindPopup(city2popup);
+        
+        
+        
+        for (var i = 0; i < cities.length; i++) {
+        console.log(cities[i]);
+    }
               
+        
+        
+    
     </script>
     
 </body> 
