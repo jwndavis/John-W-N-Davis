@@ -139,10 +139,15 @@
         var cityCapital = [true, false, false]
     
         
+        for (var i = 0; i < cities.length; i++) {
+    
+        
         var city0popup = "<b>" + cities[0] + "</b><br>" +
                     "<b>Population</b>: " + (cityPops[0].toLocaleString(cityPops[0]));
         if(cityCapital[0] == true) {
             city0popup += "<br> is the Capital City";
+        } else {
+            city0popup += "<br>";
         }
         L.marker(cityCoords[0]).addTo(map)
 			.bindPopup(city0popup);
@@ -153,6 +158,8 @@
                     "<b>Population</b>: " + (cityPops[1].toLocaleString(cityPops[1]));
         if(cityCapital[1] === true) {
             city1popup += "<br>is the Capital City";
+        } else {
+            city1popup += "<br>";
         }
         L.marker(cityCoords[1]).addTo(map)
 			.bindPopup(city1popup);
@@ -163,19 +170,13 @@
                     "<b>Population</b>: " + (cityPops[2].toLocaleString(cityPops[2]));
         if(cityCapital[2] === true) {
             city2popup += "<br>is the Capital City";
+        } else {
+            city2popup += "<br>";
         }
         L.marker(cityCoords[2]).addTo(map)
 			.bindPopup(city2popup);
         
-        
-        
-        for (var i = 0; i < cities.length; i++) {
-        console.log(cities[i]);
-        console.log(cityPops[i].toLocaleString(cityPops[i]));
-    }
-              
-        
-        
+        }
     
     </script>
     
