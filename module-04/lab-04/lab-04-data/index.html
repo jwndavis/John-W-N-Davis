@@ -6,178 +6,181 @@
     <title>Worldly City Markers</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			background: whitesmoke;
-			font-family: "Noto Sans", sans-serif;
-			color: #3d3d3d;
-		}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: whitesmoke;
+            font-family: "Noto Sans", sans-serif;
+            color: #3d3d3d;
+        }
 
-    	section {
-			width: 960px;
-			margin: 20px auto;
-		}
+        section {
+            width: 960px;
+            margin: 20px auto;
+        }
 
-		h1 {
-			width: 960px;
-			margin: 20px auto;
-			font-family: "Lora", serif;
-			letter-spacing: .04em;
-		}
+        h1 {
+            width: 960px;
+            margin: 20px auto;
+            font-family: "Lora", serif;
+            letter-spacing: .04em;
+        }
 
-		h2 {
-			font-family: "Lora", serif;
-			letter-spacing: .04em;
-		}
+        h2 {
+            font-family: "Lora", serif;
+            letter-spacing: .04em;
+        }
 
-		p {
-			font-size: 1em;
-			line-height: 1.5em;
-		}
+        p {
+            font-size: 1em;
+            line-height: 1.5em;
+        }
 
-		a {
-			color: #005daa;
-      		font-weight: bold;
-			text-decoration: none;
-		}
+        a {
+            color: #005daa;
+            font-weight: bold;
+            text-decoration: none;
+        }
 
-		a:hover {
-			text-decoration: underline;
-		}
-		#map {
-		  width: 960px;
-		  height: 540px;
-		  margin: 10px auto;
-		  border: 2px solid #d3d3d3;
-		}
-	</style>
+        a:hover {
+            text-decoration: underline;
+        }
+
+        #map {
+            width: 960px;
+            height: 540px;
+            margin: 10px auto;
+            border: 2px solid #d3d3d3;
+        }
+    </style>
 </head>
 
 <body>
 
-	<h1>3 Major Cities I've Visited</h1>
+    <h1>3 Major Cities I've Visited</h1>
 
     <div id='map'></div>
 
-	<section>
-		
-		<h2>A Sojourn Across the Globe</h2>
-		
-		<p>Map authored by John Davis</p>
+    <section>
 
-		<p>Since the turn of the century, I have had several fortunate opportunities to travel abroad to many different countries and some of their most populous cities. Traveling to these places has allowed me to accomplish one of my life goals of visiting all 7 continents, although Antarctica might prove difficult to reach.</p>
-        <p>In 2003, I went on a trip to Australia visiting <a href="http://www.sydney.com/">Sydney</a> and all its marvelous cultural and educational institutions. We visited the <a href="http://www.sydneyoperahouse.com/">Sydney Opera House</a>, strolled through the <a href="https://www.rbgsyd.nsw.gov.au/">Royal Botanic Gardens</a>, and conquered the famous <a href="http://www.bridgeclimb.com/?utm_source=bing&utm_medium=cpc&utm_campaign=US%20PPC%20Core%20Bridge%20%26%20Generic%20Terms&utm_term=%2Bsydney%20%2Bbridge&utm_content=Sydney-%20Australia%20Generic">Sydney Harbor Bridge Climb!</a> I can't wait to go back.</p>
-        <p>My next international trip was in Europe visiting 7 countries in 2 weeks with <a href="http://en.parisinfo.com/">Paris</a> as one of our main destinations. While there, we took a ride down the <a href="http://www.champselysees-paris.com/">Champs Elysees</a>, saw the <a href="http://notredamedeparis.fr/-english-">Notre Dame Cathedral</a>, and enjoyed a <a href="https://www.viator.com/Paris-tours/Cruises-Sailing-and-Water-Tours/d479-g3?pref=204">River Cruise </a> down the Seine toward the <a href="http://www.toureiffel.paris/en/">Eiffel Tower</a> gleaming in the night sky.</p>
-        <p>My most recent trip was to China and <a href="http://www.discoverhongkong.com/us/index.jsp">Hong Kong</a>, a city of bustling <a href="http://www.venere.com/img/blog/hong-kong-market.jpg">marketplaces</a> and picturesque <a href="http://3.bp.blogspot.com/-niSVZvOFDw4/Txkpa1IglJI/AAAAAAAACJk/e1jgE8V6YJI/s1600/hong-kong_940x705.jpg">city views.</a> We packed in so much in only 2 days including a ride on the <a href="http://www.thepeak.com.hk/en/5_5_1.asp">Peak Tram</a>, seeing the world's second largest <a href="http://www.hong-kong-traveller.com/hong-kong-big-buddha.html#.WB5tMPorJPY">Buddha</a>, and enjoyed the intriguing <a href="http://www.chinahighlights.com/hong-kong/food-restaurant.htm">cuisine</a> and exciting <a href="http://www.hong-kong-hotels.ws/nightlife/">nightlife</a> offered in one of Asia's most eclectic cities.</p>
+        <h2>A Sojourn Across the Globe</h2>
+
+        <p>Map authored by John Davis</p>
+
+        <p>Since the turn of the century, I have had several fortunate opportunities to travel abroad to many different countries and some of their most populous cities. Traveling to these places has allowed me to accomplish one of my life goals of visiting
+            all 7 continents, although Antarctica might prove difficult to reach.</p>
+        <p>In 2003, I went on a trip to Australia visiting <a href="http://www.sydney.com/">Sydney</a> and all its marvelous cultural and educational institutions. We visited the <a href="http://www.sydneyoperahouse.com/">Sydney Opera House</a>, strolled
+            through the <a href="https://www.rbgsyd.nsw.gov.au/">Royal Botanic Gardens</a>, and conquered the famous <a href="http://www.bridgeclimb.com/?utm_source=bing&utm_medium=cpc&utm_campaign=US%20PPC%20Core%20Bridge%20%26%20Generic%20Terms&utm_term=%2Bsydney%20%2Bbridge&utm_content=Sydney-%20Australia%20Generic">Sydney Harbor Bridge Climb!</a>            I can't wait to go back.</p>
+        <p>My next international trip was in Europe visiting 7 countries in 2 weeks with <a href="http://en.parisinfo.com/">Paris</a> as one of our main destinations. While there, we took a ride down the <a href="http://www.champselysees-paris.com/">Champs Elysees</a>,
+            saw the <a href="http://notredamedeparis.fr/-english-">Notre Dame Cathedral</a>, and enjoyed a <a href="https://www.viator.com/Paris-tours/Cruises-Sailing-and-Water-Tours/d479-g3?pref=204">River Cruise </a> down the Seine toward the <a href="http://www.toureiffel.paris/en/">Eiffel Tower</a>            gleaming in the night sky.</p>
+        <p>My most recent trip was to China and <a href="http://www.discoverhongkong.com/us/index.jsp">Hong Kong</a>, a city of bustling <a href="http://www.venere.com/img/blog/hong-kong-market.jpg">marketplaces</a> and picturesque <a href="http://3.bp.blogspot.com/-niSVZvOFDw4/Txkpa1IglJI/AAAAAAAACJk/e1jgE8V6YJI/s1600/hong-kong_940x705.jpg">city views.</a>            We packed in so much in only 2 days including a ride on the <a href="http://www.thepeak.com.hk/en/5_5_1.asp">Peak Tram</a>, seeing the world's second largest <a href="http://www.hong-kong-traveller.com/hong-kong-big-buddha.html#.WB5tMPorJPY">Buddha</a>,
+            and enjoyed the intriguing <a href="http://www.chinahighlights.com/hong-kong/food-restaurant.htm">cuisine</a> and exciting <a href="http://www.hong-kong-hotels.ws/nightlife/">nightlife</a> offered in one of Asia's most eclectic cities.</p>
         <p>I can't wait to travel the world next year to some truly <a href="http://seychelles.travel/">relaxing</a> and <a href="http://www.visitdubai.com/en-us/">exotic</a> locales!</p>
 
 
-	</section>
-	
-	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
-    <script>
+    </section>
 
-		// initial map options
-		var options = {
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <script>
+        // initial map options
+        var options = {
             center: [10.00, 74.00],
             zoom: 2
         }
-		
-		// instantiate Leaflet map object
+
+        // instantiate Leaflet map object
         var map = L.map('map', options);
-        
-		// request remote basemap tiles
-		var tiles = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
-});
-        
-       
-        
-       
+
+        // request remote basemap tiles
+        var tiles = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+        });
+
+
+
+
 
         // create a Leaflet marker at the coordinates of Denver, CO
-		// add it to the map
-		// and bind the popup content to the marker.
-        
+        // add it to the map
+        // and bind the popup content to the marker.
+
         var cityCoords = cityCoords;
-        
+
         var cityCoords = [39.74, -104.99];
-        
+
         map.addLayer(tiles);
-            
-		var cityName = "Denver";
-		
-		var cityPopulation = 649495;
-        
+
+        var cityName = "Denver";
+
+        var cityPopulation = 649495;
+
         var popup = "<b>" + cityName + "</b><br>" +
-                    "<b>Population</b>: " + (cityPopulation.toLocaleString(cityPopulation));
-        
+            "<b>Population</b>: " + (cityPopulation.toLocaleString(cityPopulation));
+
         L.marker(cityCoords).addTo(map)
-			.bindPopup(popup);
-        
-        
-        
-        
+            .bindPopup(popup);
+
+
+
+
         var cities = ["Paris", "Hong Kong", "Sydney"]
-            
+
         var cityCoords = [
             [48.86319, 2.339754],
             [22.15, 114.10],
             [-33.8696, 151.207]
         ]
-        
+
         var cityPops = [2230000, 7310000, 4920000]
-        
+
         var cityCapital = [true, false, false]
-    
-        
+
+
         for (var i = 0; i < cities.length; i++) {
-    
-        
-        var city0popup = "<b>" + cities[0] + "</b><br>" +
-                    "<b>Population</b>: " + (cityPops[0].toLocaleString(cityPops[0]));
-        if(cityCapital[0] == true) {
-            city0popup += "<br> is the Capital City";
-        } else {
-            city0popup += "<br>";
+
+
+            var city0popup = "<b>" + cities[0] + "</b><br>" +
+                "<b>Population</b>: " + (cityPops[0].toLocaleString(cityPops[0]));
+            if (cityCapital[0] == true) {
+                city0popup += "<br> is the Capital City";
+            } else {
+                city0popup += "<br>";
+            }
+            L.marker(cityCoords[0]).addTo(map)
+                .bindPopup(city0popup);
+
+
+
+            var city1popup = "<b>" + cities[1] + "</b><br>" +
+                "<b>Population</b>: " + (cityPops[1].toLocaleString(cityPops[1]));
+            if (cityCapital[1] === true) {
+                city1popup += "<br>is the Capital City";
+            } else {
+                city1popup += "<br>";
+            }
+            L.marker(cityCoords[1]).addTo(map)
+                .bindPopup(city1popup);
+
+
+
+            var city2popup = "<b>" + cities[2] + "</b><br>" +
+                "<b>Population</b>: " + (cityPops[2].toLocaleString(cityPops[2]));
+            if (cityCapital[2] === true) {
+                city2popup += "<br>is the Capital City";
+            } else {
+                city2popup += "<br>";
+            }
+            L.marker(cityCoords[2]).addTo(map)
+                .bindPopup(city2popup);
+
         }
-        L.marker(cityCoords[0]).addTo(map)
-			.bindPopup(city0popup);
-        
-        
-        
-        var city1popup = "<b>" + cities[1] + "</b><br>" +
-                    "<b>Population</b>: " + (cityPops[1].toLocaleString(cityPops[1]));
-        if(cityCapital[1] === true) {
-            city1popup += "<br>is the Capital City";
-        } else {
-            city1popup += "<br>";
-        }
-        L.marker(cityCoords[1]).addTo(map)
-			.bindPopup(city1popup);
-        
-        
-        
-        var city2popup = "<b>" + cities[2] + "</b><br>" +
-                    "<b>Population</b>: " + (cityPops[2].toLocaleString(cityPops[2]));
-        if(cityCapital[2] === true) {
-            city2popup += "<br>is the Capital City";
-        } else {
-            city2popup += "<br>";
-        }
-        L.marker(cityCoords[2]).addTo(map)
-			.bindPopup(city2popup);
-        
-        }
-    
     </script>
-    
-</body> 
+
+</body>
