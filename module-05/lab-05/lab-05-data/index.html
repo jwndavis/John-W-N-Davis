@@ -147,11 +147,11 @@
                 var name = cities[i];
                 var pop = cityPops[i];
                 var area = cityAreas[i];
-                var density = calcPopDensity(cities, cityAreas, units);
+                var density = calcPopDensity(cities[i], cityAreas[i], units);
 
                 var popup = "<b>" + cities[i] + "</b><br>" +
                     "<b>Population Density is</b>:" + " " +
-                    density + "</b><br> " + "People per Square" + " " + units;
+                    density.toLocaleString() + "</b><br> " + "People per Square" + " " + units;
 
                 L.marker(cityCoords[i]).addTo(map)
                     .bindPopup(popup);
@@ -165,21 +165,18 @@
 
         }
 
-
-
         function calcPopDensity(pop, area, units) {
 
             for (var i = 0; i < cities.length; i++) {
                 var pop = cityPops[i];
                 var area = cityAreas[i];
 
-                var density = pop / area;
-                var areakm = area * 2.58;
-                var densitykm = pop / areakm;
-
                 if (units == "miles") {
+                    var density = pop / area;
                     return density;
                 } else if (units == "km") {
+                    var areakm = area * 2.589;
+                    var densitykm = pop / areakm;
                     return densitykm;
                 }
 
