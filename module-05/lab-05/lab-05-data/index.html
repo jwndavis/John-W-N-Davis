@@ -2,172 +2,191 @@
 <html>
 
 <head>
-	<meta charset=utf-8 />
-	<title>Lab 05 Solution</title>
-	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <meta charset=utf-8 />
+    <title>City Popup Markers</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			background: whitesmoke;
-			font-family: "Noto Sans", sans-serif;
-			color: #3d3d3d;
-		}
-		
-		section {
-			width: 960px;
-			margin: 20px auto;
-		}
-		
-		h1 {
-			width: 960px;
-			margin: 20px auto;
-			font-family: "Lora", serif;
-			letter-spacing: .04em;
-		}
-		
-		h2 {
-			font-family: "Lora", serif;
-			letter-spacing: .04em;
-		}
-		
-		p {
-			font-size: 1em;
-			line-height: 1.5em;
-		}
-		
-		a {
-			color: #005daa;
-			font-weight: bold;
-			text-decoration: none;
-		}
-		
-		a:hover {
-			text-decoration: underline;
-		}
-		
-		#map {
-			width: 960px;
-			height: 540px;
-			margin: 10px auto;
-			border: 2px solid #d3d3d3;
-		}
-		
-		button {
-			font-size: 1.2em;
-			/*            margin: 10px auto;*/
-		}
-	</style>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: whitesmoke;
+            font-family: "Noto Sans", sans-serif;
+            color: #3d3d3d;
+        }
+        
+        section {
+            width: 960px;
+            margin: 20px auto;
+        }
+        
+        h1 {
+            width: 960px;
+            margin: 20px auto;
+            font-family: "Lora", serif;
+            letter-spacing: .04em;
+        }
+        
+        h2 {
+            font-family: "Lora", serif;
+            letter-spacing: .04em;
+        }
+        
+        p {
+            font-size: 1em;
+            line-height: 1.5em;
+        }
+        
+        a {
+            color: #005daa;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        #map {
+            width: 960px;
+            height: 540px;
+            margin: 10px auto;
+            border: 2px solid #d3d3d3;
+        }
+        
+        button {
+            font-size: 1.2em;
+            /*            margin: 10px auto;*/
+        }
+    </style>
 </head>
 
 <body>
-	<h1>map title</h1>
+    <h1>From Atlantic to Pacific</h1>
 
-	<div id='map'></div>
+    <div id='map'></div>
 
 
-	<section>
+    <section>
 
-		<button id='map-cities'>Map Cities</button>
+        <button id='map-cities'>Map Cities</button>
 
-		<h2>about this map</h2>
+        <h2>Global Cities Part Deux</h2>
 
-		<p>Map authored by me, MY NAME</p>
+        <p>Map authored by John Davis</p>
 
-		<p>Additional information about <a href="#">the data</a> and map goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. </p>
+        <p>Continuing my journey (in reverse) across the world in the last 16 years has yielded me the opportunity to visit some great places. Most recently, I went to our nation's capital Washington D.C. My fiancé and I visited <a href="https://www.nps.gov/nama/index.htm">The National Mall</a> and all its historic monuments and enjoyed <a href="http://www.foodandwine.com/articles/washington-dc-new-food-scene">DC's food scene!</a></p>
+        <p>In 2010, I decided to visit <a href="http://www.japan-guide.com/">Japan</a>. This was one of my favorite trips not only because of the vast differences in our cultures, but because of the wonderful people, technology, scenery, and of course again, the food! Japan is a wonderful place to visit, from the historic tales of <a href="http://www.visithiroshima.net/">Hiroshima</a>, the enchanting <a href="https://www.jnto.go.jp/eng/regional/nara/narakoen.html">Nara Park</a>, to the vast, unique, and magnificent city of <a href="http://www.japan-guide.com/e/e2164.html">Tokyo</a>!</p>
+        <p>Lastly, in 2009, I visited <a href="http://www.visitlondon.com/">London</a> where I went to <a href="https://www.london.gov.uk/about-us/our-building-and-squares/trafalgar-square?source=vanityurl">Trafalgar Square</a>, <a href="http://www.buckinghampalace.co.uk/index.php">Buckingham Palace</a>, and <a href="http://www.iwm.org.uk/">The Imperial War Museum</a>. It was a very enlightening and educational visit.</p>
 
-	</section>
 
-	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    </section>
 
-	<script>
-		// map options
-		var options = {
-			center: [20, -20],
-			zoom: 2
-		}
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
 
-		// creates the Leaflet map
-		var map = L.map('map', options);
+    <script>
+        // map options
+        var options = {
+            center: [20, -20],
+            zoom: 2
+        }
 
-		// requests some map tiles
-		var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
-			subdomains: 'abcd',
-			maxZoom: 19
-		});
+        // creates the Leaflet map
+        var map = L.map('map', options);
 
-		// adds these tiles to the map
-		map.addLayer(tiles);
+        // requests some map tiles
+        var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+            subdomains: 'abcd',
+            maxZoom: 19
+        });
 
-        
-            // write 3 city names as Strings within an array
-		var cities = ["Washington D.C.", "London", "Tokyo"]
-        
-            // write a two-dimensional array of the coordinates for each city
-		var cityCoords = [
+        // adds these tiles to the map
+        map.addLayer(tiles);
+
+
+
+        var cities = ["Washington D.C.", "London", "Tokyo"]
+
+
+        var cityCoords = [
             [38.89037, -77.03196],
             [51.50642, -0.12721],
             [35.68321, 139.8089]
         ]
-		
-            // write the populations of the 3 cities as Numbers within an array;
+
+
         var cityPops = [672228, 8670000, 13620000]
-		
-            // write the areas of the 3 cities as Numbers within an array;
+
+
         var cityAreas = [68.30, 606.95, 844.66]
 
-		var button = document.getElementById("map-cities");
+        var button = document.getElementById("map-cities");
 
-		button.addEventListener("click", function () {
+        button.addEventListener("click", function () {
 
-			var units = prompt('Enter the units for calculating density', 'Enter "miles" or "km"');
+            var units = prompt('Enter the units for calculating density', 'Enter "miles" or "km"');
 
             mapCities(units);
-            
-            // call a function named mapCities, and send the units variable as an argument
-
-		}); // addEventListener callback function ends here
 
 
-		      // write a function here named mapCities so that it accepts units as a parameter
-            function mapCities(message) {
-                
+        });
+
+
+
+        function mapCities(units) {
+
             for (var i = 0; i < cities.length; i++) {
+
+                var name = cities[i];
+                var pop = cityPops[i];
+                var area = cityAreas[i];
+                var density = calcPopDensity(cities, cityAreas, units);
+
+                var popup = "<b>" + cities[i] + "</b><br>" +
+                    "<b>Population Density is</b>:" + " " +
+                    density + "</b><br> " + "People per Square" + " " + units;
+
+                L.marker(cityCoords[i]).addTo(map)
+                    .bindPopup(popup);
+
                 console.log(cities[i]);
-                console.log(cityPops[i]);
-                console.log(cityAreas[i]);
-                
-                calcPopDensity(density);
-                
-                }
-            
+                console.log(cityPops[i].toLocaleString());
+                console.log(cityAreas[i].toLocaleString());
+
+                console.log(calcPopDensity(pop, area, units));
             }
 
-            mapCities();
-        
-            function calcPopDensity(message) {
-                
+        }
+
+
+
+        function calcPopDensity(pop, area, units) {
+
+            for (var i = 0; i < cities.length; i++) {
+                var pop = cityPops[i];
+                var area = cityAreas[i];
+
+                var density = pop / area;
+                var areakm = area * 2.58;
+                var densitykm = pop / areakm;
+
+                if (units == "miles") {
+                    return density;
+                } else if (units == "km") {
+                    return densitykm;
+                }
+
+                return density;
             }
-        
-            var cityPop = cityPops[i];
-            var area = cityAreas[i];
-            
-            calPopDensity(cityPop, area);
-        
-		// write a function named calcPopDensity here so that it accepts a 
-		// single city's population, area, and the value for units 
-		// determined by the user
-		
-		
-	</script>
+        }
+    </script>
 
 </body>
 
