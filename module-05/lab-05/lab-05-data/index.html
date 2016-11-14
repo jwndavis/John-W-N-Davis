@@ -147,7 +147,7 @@
                 var name = cities[i];
                 var pop = cityPops[i];
                 var area = cityAreas[i];
-                var density = calcPopDensity(cities[i], cityAreas[i], units);
+                var density = calcPopDensity(pop, area, units);
 
                 var popup = "<b>" + cities[i] + "</b><br>" +
                     "<b>Population Density is</b>:" + " " +
@@ -161,26 +161,21 @@
                 console.log(cityAreas[i].toLocaleString());
 
                 console.log(calcPopDensity(pop, area, units));
+
+                calcPopDensity(pop, area, units);
             }
 
         }
 
         function calcPopDensity(pop, area, units) {
 
-            for (var i = 0; i < cities.length; i++) {
-                var pop = cityPops[i];
-                var area = cityAreas[i];
-
-                if (units == "miles") {
-                    var density = pop / area;
-                    return density;
-                } else if (units == "km") {
-                    var areakm = area * 2.589;
-                    var densitykm = pop / areakm;
-                    return densitykm;
-                }
-
+            if (units == "miles") {
+                var density = pop / area;
                 return density;
+            } else if (units == "km") {
+                var areakm = area * 2.589;
+                var densitykm = pop / areakm;
+                return densitykm;
             }
         }
     </script>
