@@ -138,10 +138,7 @@
               // while this condition is true
             } while (units != "miles" && units != "km")
 
-
-
             mapCities(units);
-
 
         });
 
@@ -162,14 +159,6 @@
 
                 L.marker(cityCoords[i]).addTo(map)
                     .bindPopup(popup);
-
-                console.log(cities[i]);
-                console.log(cityPops[i].toLocaleString());
-                console.log(cityAreas[i].toLocaleString());
-
-                console.log(calcPopDensity(pop, area, units));
-
-                calcPopDensity(pop, area, units);
             }
 
         }
