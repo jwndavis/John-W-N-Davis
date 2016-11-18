@@ -48,6 +48,16 @@
             text-decoration: none;
         }
         
+        Latin-Blue {
+            color:darkcyan
+        }
+        European-Red {
+            color:crimson
+        }
+        Oceania-Green {
+            color:forestgreen
+        }
+        
         a:hover {
             text-decoration: underline;
         }
@@ -121,9 +131,13 @@
 
         for (var i = 0; i < cities.length; i++) {
 
+            var city = cities.name
             var props = cities[i].properties
-
-            var popup = "temporary string"
+            var pop = props.population
+            var country = props.country
+            var colorClass = buildPopup(city, pop, country);
+            var popup = "<div class='"+colorClass+"'><b>" + city + "</b><br>" +
+            "<b>Population</b>: " + pop.toLocaleString() + "<div>";
 
 
 
@@ -140,11 +154,14 @@
         function buildPopup(city, pop, country) {
 
             if (country == "Costa Rica") {
-                var colorClass = "Blue";
+                var colorClass = "Latin-Blue";
             } else if (country == "Switzerland")
-                var colorClass = "Red";
+                var colorClass = "European-Red";
             else(country == "New Zealand")
-            var colorCLass = "Green";
+                var colorClass = "Oceania-Green";
+
+            return colorClass
+
         };
 
 
