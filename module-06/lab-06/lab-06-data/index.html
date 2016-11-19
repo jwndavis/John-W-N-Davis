@@ -88,7 +88,11 @@
 
         <p>Map authored by John Davis</p>
 
-        <p>Additional information about <a href="#">the data</a> and map goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. </p>
+        <p>Close to the equator, <a href="http://www.govisitcostarica.com/region/city.asp?cID=325">Costa Rica</a> is a wonderous and adventurous place to visit. As the capital of the country, San Jose is where you can visit educational <a href="http://www.costaricaguides.com/articles/top_ten_museums_costa_rica.html">museums</a>, <a href="#">restaurants</a>, <a href="http://ticotimes.com/costa-rica/san-jose-mercado-central-flea-market">markets</a>, and spend a <a href="https://tipscostarica.com/san-jose-costa-rica-nightlife/">night</a> on the town.</p>
+        
+        <p>Settled north of the Tropic of Cancer at 47<sup>0</sup> degrees north in the Alps, <a href="http://www.myswitzerland.com/en-us/lucerne.html">Lucerne</a>, Switzerland is the home of <a href="http://www.bucherer.com/en/locations/lucerne-schwanenplatz">Bucherer </a>watches and jewelery, <a href="http://www.luzern.com/en/chocolate">chocolate</a>, and <a href="https://www.viator.com/Zurich-attractions/Mt-Pilatus-tours-tickets/d577-a120?pref=204">Mount Pilatus</a>. With stunning mountain vistas, the <a href="https://en.wikipedia.org/wiki/Swiss_Alps">Swiss Alps</a> region is one of my favorites!</p>
+        
+        <p>Lastly, nestled well south of the Tropic of Capricorn is the town of <a href="http://www.rotoruanz.com/">Rotorua</a>, New Zealand. This city is known for its famous <a href="http://www.rotoruanz.com/visit/see-and-do/geothermal-wonders">hot springs</a>. Not overshadowed by these natural geothermal attractions, you can also <a href="https://www.everythingnewzealand.com/bungy-43m-agroventures-rotorua-1088/">bungy jump</a> and enjoy a nice <a href="http://new-zealand.tourism.net.nz/nz/Sheep-Shearing">sheep shearing</a> demonstration. There are plenty of exciting countries and cities to explore all over the world. Go get your <a href="http://www.uspassportnow.com/?matchtype=e&keyword=passport&network=o&device=c">passport</a> today!</p>
 
     </section>
 
@@ -141,7 +145,6 @@
 
         for (var i = 0; i < cities.length; i++) {
 
-            
             var props = cities[i].properties
             var city = cities[i].name
             var pop = props.population
@@ -158,7 +161,6 @@
 
             console.log(props);
             console.log(cities[i].properties.country);
-
         }
 
         function buildPopup(city, pop, country, pic) {
@@ -174,8 +176,7 @@
             "<b>Population</b>: " + pop.toLocaleString() + "<div>";
 
         };
-
-
+        
         var city = cities.name
         var pop = props.population
         var country = props.country
