@@ -3,7 +3,7 @@
 
 <head>
     <meta charset=utf-8 />
-    <title>Lab 06 Starter</title>
+    <title>Pictoral City Markers</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
@@ -48,16 +48,6 @@
             text-decoration: none;
         }
         
-        Latin-Blue {
-            color:darkcyan
-        }
-        European-Red {
-            color:crimson
-        }
-        Oceania-Green {
-            color:forestgreen
-        }
-        
         a:hover {
             text-decoration: underline;
         }
@@ -68,18 +58,35 @@
             margin: 10px auto;
             border: 2px solid #d3d3d3;
         }
+        
+        .Latin-Blue {
+            color: #135185;
+        }
+        
+        .Latin-Blue {
+            color: #135185;
+        }
+        
+        .European-Red {
+            color: #bc2739;
+        }
+        
+        .Oceania-Green {
+            color: #1e8a75;
+        }
+
     </style>
 </head>
 
 <body>
-    <h1>map title</h1>
+    <h1>3 Cities of Different Hemispherical Latitudes</h1>
 
     <div id='map'></div>
 
 
     <section>
 
-        <p>Map authored by me, MY NAME</p>
+        <p>Map authored by John Davis</p>
 
         <p>Additional information about <a href="#">the data</a> and map goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. </p>
 
@@ -108,7 +115,8 @@
                 properties: {
                     coordinates: [9.92975, -84.08569],
                     population: 333981,
-                    country: "Costa Rica"
+                    country: "Costa Rica",
+                    pic: "images/san-jose/san-jose.jpg"
                 }
             },
             {
@@ -116,7 +124,8 @@
                 properties: {
                     coordinates: [47.05, 8.3],
                     population: 78093,
-                    country: "Switzerland"
+                    country: "Switzerland",
+                    pic: "images/lucerne/lucerne.jpg"
                 }
             },
             {
@@ -124,20 +133,21 @@
                 properties: {
                     coordinates: [-38.13778, 176.2514],
                     population: 68900,
-                    country: "New Zealand"
+                    country: "New Zealand",
+                    pic: "images/rotorua/rotorua.jpg"
                 }
             }
         ];
 
         for (var i = 0; i < cities.length; i++) {
 
-            var city = cities.name
+            
             var props = cities[i].properties
+            var city = cities[i].name
             var pop = props.population
             var country = props.country
-            var colorClass = buildPopup(city, pop, country);
-            var popup = "<div class='"+colorClass+"'><b>" + city + "</b><br>" +
-            "<b>Population</b>: " + pop.toLocaleString() + "<div>";
+            var pic = props.pic
+            var popup = buildPopup(city, pop, country, pic);
 
 
 
@@ -151,16 +161,17 @@
 
         }
 
-        function buildPopup(city, pop, country) {
+        function buildPopup(city, pop, country, pic) {
 
             if (country == "Costa Rica") {
-                var colorClass = "Latin-Blue";
-            } else if (country == "Switzerland")
+                var colorClass = "Latin-Blue";  
+            } if (country == "Switzerland") {
                 var colorClass = "European-Red";
-            else(country == "New Zealand")
+            } if (country == "New Zealand") {
                 var colorClass = "Oceania-Green";
-
-            return colorClass
+        }
+            return "<img class='pic' src='"+ pic +"'>" + "<div class='"+colorClass+"'><b>" + city + "," + " " + country + "</b><br>" +
+            "<b>Population</b>: " + pop.toLocaleString() + "<div>";
 
         };
 
@@ -168,6 +179,7 @@
         var city = cities.name
         var pop = props.population
         var country = props.country
+        var pic = props.pic
 
         var cities = ["San Jose", "Lucerne", "Rotorua"];
         console.log(cities);
