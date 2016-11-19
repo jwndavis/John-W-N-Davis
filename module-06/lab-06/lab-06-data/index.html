@@ -43,7 +43,7 @@
         }
         
         a {
-            color: #005daa;
+            color:dimgrey;
             font-weight: bold;
             text-decoration: none;
         }
@@ -63,10 +63,6 @@
             color: #135185;
         }
         
-        .Latin-Blue {
-            color: #135185;
-        }
-        
         .European-Red {
             color: #bc2739;
         }
@@ -75,11 +71,16 @@
             color: #1e8a75;
         }
 
+        .pic {
+            width: 150px;
+            height: 100px;
+        }
+        
     </style>
 </head>
 
 <body>
-    <h1>3 Cities of Different Hemispherical Latitudes</h1>
+    <h1>3 Cities of Different Hemispherical GeoLocations</h1>
 
     <div id='map'></div>
 
@@ -88,11 +89,12 @@
 
         <p>Map authored by John Davis</p>
 
-        <p>Close to the equator, <a href="http://www.govisitcostarica.com/region/city.asp?cID=325">Costa Rica</a> is a wonderous and adventurous place to visit. As the capital of the country, San Jose is where you can visit educational <a href="http://www.costaricaguides.com/articles/top_ten_museums_costa_rica.html">museums</a>, <a href="#">restaurants</a>, <a href="http://ticotimes.com/costa-rica/san-jose-mercado-central-flea-market">markets</a>, and spend a <a href="https://tipscostarica.com/san-jose-costa-rica-nightlife/">night</a> on the town.</p>
+        <p style="color: #135185;">Close to the equator, <a href="http://www.govisitcostarica.com/region/city.asp?cID=325">Costa Rica</a> is a wondrous and adventurous place to visit. As the capital of the country, San Jose is where you can visit educational <a href="http://www.costaricaguides.com/articles/top_ten_museums_costa_rica.html">museums</a>, <a href="#">restaurants</a>, <a href="http://ticotimes.com/costa-rica/san-jose-mercado-central-flea-market">markets</a>, and spend a <a href="https://tipscostarica.com/san-jose-costa-rica-nightlife/">night</a> on the town.</p>
         
-        <p>Settled north of the Tropic of Cancer at 47<sup>0</sup> degrees north in the Alps, <a href="http://www.myswitzerland.com/en-us/lucerne.html">Lucerne</a>, Switzerland is the home of <a href="http://www.bucherer.com/en/locations/lucerne-schwanenplatz">Bucherer </a>watches and jewelery, <a href="http://www.luzern.com/en/chocolate">chocolate</a>, and <a href="https://www.viator.com/Zurich-attractions/Mt-Pilatus-tours-tickets/d577-a120?pref=204">Mount Pilatus</a>. With stunning mountain vistas, the <a href="https://en.wikipedia.org/wiki/Swiss_Alps">Swiss Alps</a> region is one of my favorites!</p>
+        <p style="color: #bc2739;">Settled north of the Tropic of Cancer at 47<sup>0</sup> degrees north in the Alps, <a href="http://www.myswitzerland.com/en-us/lucerne.html">Lucerne</a>, Switzerland is the home of <a href="http://www.bucherer.com/en/locations/lucerne-schwanenplatz">Bucherer </a>watches and jewelry, <a href="http://www.luzern.com/en/chocolate">chocolate</a>, and <a href="https://www.viator.com/Zurich-attractions/Mt-Pilatus-tours-tickets/d577-a120?pref=204">Mount Pilatus</a>. With stunning mountain vistas, the <a href="https://en.wikipedia.org/wiki/Swiss Alps">Swiss Alps</a> region is one of my favorites!</p>
         
-        <p>Lastly, nestled well south of the Tropic of Capricorn is the town of <a href="http://www.rotoruanz.com/">Rotorua</a>, New Zealand. This city is known for its famous <a href="http://www.rotoruanz.com/visit/see-and-do/geothermal-wonders">hot springs</a>. Not overshadowed by these natural geothermal attractions, you can also <a href="https://www.everythingnewzealand.com/bungy-43m-agroventures-rotorua-1088/">bungy jump</a> and enjoy a nice <a href="http://new-zealand.tourism.net.nz/nz/Sheep-Shearing">sheep shearing</a> demonstration. There are plenty of exciting countries and cities to explore all over the world. Go get your <a href="http://www.uspassportnow.com/?matchtype=e&keyword=passport&network=o&device=c">passport</a> today!</p>
+        <p style="color: #1e8a75;">Lastly, nestled well south of the Tropic of Capricorn is the town of <a href="http://www.rotoruanz.com/">Rotorua</a>, New Zealand. This city is known for its famous <a href="http://www.rotoruanz.com/visit/see-and-do/geothermal-wonders">hot springs</a>. Not overshadowed by these natural geothermal attractions, you can also <a href="https://www.everythingnewzealand.com/bungy-43m-agroventures-rotorua-1088/">bungy jump</a> and enjoy a nice <a href="http://new-zealand.tourism.net.nz/nz/Sheep-Shearing">sheep shearing</a> demonstration. There are plenty of exciting countries and cities to explore all over the world. Go get your <a href="http://www.uspassportnow.com/?matchtype=e&keyword=passport&network=o&device=c">passport</a> today!</p>
+
 
     </section>
 
@@ -101,7 +103,7 @@
 
     <script>
         var map = L.map('map', {
-            center: [0.0, 35.0],
+            center: [33.0, 48.0],
             zoom: 2,
         });
 
@@ -152,53 +154,33 @@
             var pic = props.pic
             var popup = buildPopup(city, pop, country, pic);
 
-
-
             L.marker(props.coordinates).addTo(map)
                 .bindPopup(popup);
 
-            buildPopup(city, pop, country);
+            buildPopup(city, pop, country, pic);
 
-            console.log(props);
-            console.log(cities[i].properties.country);
+            //console.log(props);
+            //console.log(cities[i].properties.country);
         }
 
         function buildPopup(city, pop, country, pic) {
 
             if (country == "Costa Rica") {
-                var colorClass = "Latin-Blue";  
+                var colorClass = "Latin-Blue";
             } if (country == "Switzerland") {
                 var colorClass = "European-Red";
             } if (country == "New Zealand") {
                 var colorClass = "Oceania-Green";
         }
-            return "<img class='pic' src='"+ pic +"'>" + "<div class='"+colorClass+"'><b>" + city + "," + " " + country + "</b><br>" +
+            
+            return "<img class='pic' src='"+ pic +"'>" + "<div class='"+colorClass+"'><b>" +
+            city + "," + " " + country + "</b><br>" +
             "<b>Population</b>: " + pop.toLocaleString() + "<div>";
 
         };
         
-        var city = cities.name
-        var pop = props.population
-        var country = props.country
-        var pic = props.pic
+        
 
-        var cities = ["San Jose", "Lucerne", "Rotorua"];
-        console.log(cities);
-
-
-
-
-
-
-
-        var cities = [{
-            name: "Louisville",
-            properties: {
-                coordinates: [38.25, -85.7667],
-                population: 756832,
-                state: "KY"
-            }
-        }];
     </script>
 
 </body>
