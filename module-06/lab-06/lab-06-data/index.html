@@ -43,7 +43,7 @@
         }
         
         a {
-            color:dimgrey;
+            color: dimgrey;
             font-weight: bold;
             text-decoration: none;
         }
@@ -70,12 +70,11 @@
         .Oceania-Green {
             color: #1e8a75;
         }
-
+        
         .pic {
             width: 150px;
             height: 100px;
         }
-        
     </style>
 </head>
 
@@ -90,9 +89,9 @@
         <p>Map authored by John Davis</p>
 
         <p style="color: #135185;">Close to the equator, <a href="http://www.govisitcostarica.com/region/city.asp?cID=325">Costa Rica</a> is a wondrous and adventurous place to visit. As the capital of the country, San Jose is where you can visit educational <a href="http://www.costaricaguides.com/articles/top_ten_museums_costa_rica.html">museums</a>, <a href="#">restaurants</a>, <a href="http://ticotimes.com/costa-rica/san-jose-mercado-central-flea-market">markets</a>, and spend a <a href="https://tipscostarica.com/san-jose-costa-rica-nightlife/">night</a> on the town.</p>
-        
+
         <p style="color: #bc2739;">Settled above of the Tropic of Cancer at 47<sup>0</sup> north in the Alps, <a href="http://www.myswitzerland.com/en-us/lucerne.html">Lucerne</a>, Switzerland is the home of <a href="http://www.bucherer.com/en/locations/lucerne-schwanenplatz">Bucherer </a>watches and jewelry, <a href="http://www.luzern.com/en/chocolate">chocolate</a>, and <a href="https://www.viator.com/Zurich-attractions/Mt-Pilatus-tours-tickets/d577-a120?pref=204">Mount Pilatus</a>. With stunning mountain vistas, the <a href="https://en.wikipedia.org/wiki/Swiss Alps">Swiss Alps</a> region is one of my favorites!</p>
-        
+
         <p style="color: #1e8a75;">Nestled well south of the Tropic of Capricorn is the town of <a href="http://www.rotoruanz.com/">Rotorua</a>, New Zealand. This city is known for its famous <a href="http://www.rotoruanz.com/visit/see-and-do/geothermal-wonders">hot springs</a>. Not overshadowed by these natural geothermal attractions, you can also <a href="https://www.everythingnewzealand.com/bungy-43m-agroventures-rotorua-1088/">bungy jump</a> and enjoy a nice <a href="http://new-zealand.tourism.net.nz/nz/Sheep-Shearing">sheep shearing</a> demonstration. There are plenty of exciting countries and cities to explore all over the world. Go get your <a href="http://www.uspassportnow.com/?matchtype=e&keyword=passport&network=o&device=c">passport</a> today!</p>
 
 
@@ -167,19 +166,19 @@
 
             if (country == "Costa Rica") {
                 var colorClass = "Latin-Blue";
-            } if (country == "Switzerland") {
+            }
+            if (country == "Switzerland") {
                 var colorClass = "European-Red";
-            } if (country == "New Zealand") {
+            }
+            if (country == "New Zealand") {
                 var colorClass = "Oceania-Green";
-        }
-            
-            return "<img class='pic' src='"+ pic +"'>" + "<div class='"+ colorClass+"'><b>" +
-            city + "," + " " + country + "</b><br>" + 
-            "<b>Population</b>: " + pop.toLocaleString() + "<div>";
+            }
+
+            return "<img class='pic' src='" + pic + "'>" + "<div class='" + colorClass + "'><b>" +
+                city + "," + " " + country + "</b><br>" +
+                "<b>Population</b>: " + pop.toLocaleString() + "<div>";
 
         };
-        
-
     </script>
 
 </body>
