@@ -109,31 +109,31 @@
         })
     }).addTo(map);
         
-    map.setView([40.2835, -110.3256], 7);
-    
-    var popup = "<b>" + distance +
-        " " + "km from Red Iguana"   
-    
-    var cityMarker = L.marker([40.2835, -110.3256], {
-        draggable: true
-    }).addTo(map).bindPopup(popup);
-        
-    cityMarker.on("dragend", function(e) {
-        console.log(e)
-        console.log(cityMarker.getlatLng, distance);
-    }).addTo(map).bindPopup(popup);
-    
-    var redIguana = L.latLng(40.7718,-111.9124);
-    var cityMarker = L.latLng(40.2835, -110.3256);
-    var distance = redIguana.distanceTo(cityMarker);
+    var cityMarker = map.on('click', function(e){
+
+        console.log(e.latlng);
+
+        L.marker(e.latlng, {
+            draggable: true
+        }).addTo(map);
+    });
+       
+    var distance = e.latlng.distanceTo(redIguana);
         console.log(distance);
         
-    map.on('click', function(e) {
+    var popup = distance.setPopupContent(distance + "km from Red Iguana").openPopup();
         
-        console.log(e.latlng);
+        L.marker.on("dragend", function(e) {
+            console.log(e),
+            console.log(cityMarker.latlng);
+        })
         
-    });
-
+        
+        
+        
+        
+        
+        
     </script>
 
 </body>
