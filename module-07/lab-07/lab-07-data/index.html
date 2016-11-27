@@ -91,8 +91,14 @@
         center: [40.74,-110.61],
         zoom: 6
     }
-
+    
     var map = L.map('map', options);
+
+    var tiles = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	maxZoom: 19,
+	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+});
+        map.addLayer(tiles);
 
     var redIguana = L.latLng(40.7718,-111.9124);
 
@@ -102,11 +108,30 @@
             iconSize: [40, 36]
         })
     }).addTo(map);
-
-    map.on('click', function(e){
-
+        
+    map.setView([40.2835, -110.3256], 7);
+    
+    var popup = "<b>" + distance +
+        " " + "km from Red Iguana"   
+    
+    var cityMarker = L.marker([40.2835, -110.3256], {
+        draggable: true
+    }).addTo(map).bindPopup(popup);
+        
+    cityMarker.on("dragend", function(e) {
+        console.log(e)
+        console.log(cityMarker.getlatLng, distance);
+    }).addTo(map).bindPopup(popup);
+    
+    var redIguana = L.latLng(40.7718,-111.9124);
+    var cityMarker = L.latLng(40.2835, -110.3256);
+    var distance = redIguana.distanceTo(cityMarker);
+        console.log(distance);
+        
+    map.on('click', function(e) {
+        
         console.log(e.latlng);
-
+        
     });
 
     </script>

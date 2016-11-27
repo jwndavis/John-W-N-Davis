@@ -75,6 +75,7 @@
             width: 150px;
             height: 100px;
         }
+        s
     </style>
 </head>
 
@@ -88,7 +89,7 @@
 
         <p>Map authored by John Davis</p>
 
-        <p style="color: #135185;">Close to the equator, <a href="http://www.govisitcostarica.com/region/city.asp?cID=325">Costa Rica</a> is a wondrous and adventurous place to visit. As the capital of the country, San Jose is where you can visit educational <a href="http://www.costaricaguides.com/articles/top_ten_museums_costa_rica.html">museums</a>, <a href="#">restaurants</a>, <a href="http://ticotimes.com/costa-rica/san-jose-mercado-central-flea-market">markets</a>, and spend a <a href="https://tipscostarica.com/san-jose-costa-rica-nightlife/">night</a> on the town.</p>
+        <p style="color: #135185;">Close to the equator, <a href="http://www.visitcostarica.com/ict/paginas/informacion.asp">Costa Rica</a> is a wondrous and adventurous place to visit. As the capital of the country, San Jose is where you can visit educational <a href="http://www.costaricaguides.com/articles/top_ten_museums_costa_rica.html">museums</a>, <a href="#">restaurants</a>, <a href="http://ticotimes.com/costa-rica/san-jose-mercado-central-flea-market">markets</a>, and spend a <a href="https://tipscostarica.com/san-jose-costa-rica-nightlife/">night</a> on the town.</p>
 
         <p style="color: #bc2739;">Settled above of the Tropic of Cancer at 47<sup>0</sup> north in the Alps, <a href="http://www.myswitzerland.com/en-us/lucerne.html">Lucerne</a>, Switzerland is the home of <a href="http://www.bucherer.com/en/locations/lucerne-schwanenplatz">Bucherer </a>watches and jewelry, <a href="http://www.luzern.com/en/chocolate">chocolate</a>, and <a href="https://www.viator.com/Zurich-attractions/Mt-Pilatus-tours-tickets/d577-a120?pref=204">Mount Pilatus</a>. With stunning mountain vistas, the <a href="https://en.wikipedia.org/wiki/Swiss Alps">Swiss Alps</a> region is one of my favorites!</p>
 
@@ -121,7 +122,8 @@
                     coordinates: [9.92975, -84.08569],
                     population: 333981,
                     country: "Costa Rica",
-                    pic: "images/sjcr.jpg"
+                    pic: "images/sjcr.jpg",
+                    link: "<a href=https://www.lonelyplanet.com/costa-rica/san-jose>San Jose, Costa Rica"
                 }
             },
             {
@@ -130,7 +132,8 @@
                     coordinates: [47.05, 8.3],
                     population: 78093,
                     country: "Switzerland",
-                    pic: "images/lucerne.jpg"
+                    pic: "images/lucerne.jpg",
+                    link: "<a href=http://wikitravel.org/en/Lucerne>Lucerne, Switzerland"
                 }
             },
             {
@@ -139,7 +142,8 @@
                     coordinates: [-38.13778, 176.2514],
                     population: 68900,
                     country: "New Zealand",
-                    pic: "images/rhs.jpg"
+                    pic: "images/rhs.jpg",
+                    link: "<a href=https://en.wikipedia.org/wiki/Rotorua>Rotorua, New Zealand"
                 }
             }
         ];
@@ -151,6 +155,7 @@
             var pop = props.population
             var country = props.country
             var pic = props.pic
+            var web = props.link
             var popup = buildPopup(city, pop, country, pic);
 
             L.marker(props.coordinates).addTo(map)
@@ -174,8 +179,7 @@
                 var colorClass = "Oceania-Green";
             }
 
-            return "<img class='pic' src='" + pic + "'>" + "<div class='" + colorClass + "'><b>" +
-                city + "," + " " + country + "</b><br>" +
+            return "<img class='pic' src='" + pic + "'>" + "<div class='" + colorClass + "'><b>" + city + "," + " " + country + "</b><br>" +
                 "<b>Population</b>: " + pop.toLocaleString() + "<div>";
 
         };
