@@ -3,7 +3,7 @@
 
 <head>
     <meta charset=utf-8 />
-    <title>Lab 07 Template</title>
+    <title>Measureable Markers</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
@@ -70,16 +70,19 @@
 </head>
 
 <body>
-  <h1>This is the title to my awesome map.</h1>
+  <h1>Iguana Restaurants</h1>
 
  <div id='map'></div>
 
  <section>
-   <h2>about this map</h2>
+   <h2>What is our distance from The Red Iguana Restaurant?</h2>
 
-   <p>Map authored by me, MY NAME</p>
+   <p>Map authored by John Davis</p>
 
-   <p>Additional information about <a href="#">the data</a> and map goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. </p>
+   <p>When the user clicks on the map, a marker appears with a popup notification indicating your distance in kilometers, from the <a href="http://rediguana.com/">Red Iguana Restaurant</a> in <a href="http://www.slcgov.com/">Salt Lake City</a>, Utah. You can also drag that marker to a different location where the popup will inform you of your new location and distance from the Red Iguana Restaurant. Make sure you plan your day accordingly to get back in time for dinner. I hear the <a href="http://rediguana.squarehook.com/classics">Red Iguana classics</a> are delightful!
+     
+     
+    </p>
 
  </section>
 
@@ -89,7 +92,7 @@
 
     var options = {
         center: [40.74,-110.61],
-        zoom: 6
+        zoom: 7
     }
     
     var map = L.map('map', options);
@@ -112,24 +115,23 @@
     var cityMarker = map.on('click', function(e){
 
         console.log(e.latlng);
-
-        L.marker(e.latlng, {
-            draggable: true
-        }).addTo(map);
-    });
-       
+ 
     var distance = e.latlng.distanceTo(redIguana);
-        console.log(distance);
+        distance = (distance / 1000);
+        console.log(distance.toLocaleString());
+    
+    var popup = "<b>" + distance.toLocaleString() + " " +
+        "km from Red Iguana"
         
-    var popup = distance.setPopupContent(distance + "km from Red Iguana").openPopup();
-        
-        L.marker.on("dragend", function(e) {
-            console.log(e),
-            console.log(cityMarker.latlng);
-        })
-        
-        
-        
+    var cityLoc = L.marker(e.latlng, {
+                    draggable: true
+                    }).addTo(map).bindPopup(popup).openPopup();
+
+        cityLoc.on("dragend", function(e) {
+            cityLoc.getPopup(popup).setContent(popup);
+            console.log(e.distance);
+    });
+});
         
         
         
