@@ -116,20 +116,21 @@
 
         console.log(e.latlng);
  
-    var distance = e.latlng.distanceTo(redIguana);
-        distance = (distance / 1000);
-        console.log(distance.toLocaleString());
+    var distancedrag = e.latlng.distanceTo(redIguana);
+        distancedrag = (distancedrag / 1000);
+        console.log(distancedrag.toLocaleString());
     
-    var popup = "<b>" + distance.toLocaleString() + " " +
+    var popup = "<b>" + distancedrag.toLocaleString() + " " +
         "km from Red Iguana"
         
     var cityLoc = L.marker(e.latlng, {
                     draggable: true
-                    }).addTo(map).bindPopup(popup).openPopup();
+                }).addTo(map).bindPopup(popup).openPopup();
 
         cityLoc.on("dragend", function(e) {
-            cityLoc.getPopup(popup).setContent(popup);
-            console.log(e.distance);
+            
+            cityLoc.getPopup(popup).setContent(popup).openPopup();
+            console.log(e);
     });
 });
         
