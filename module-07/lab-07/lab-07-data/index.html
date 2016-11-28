@@ -7,136 +7,133 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
-  	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
-  	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-  	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 
     <style>
-  		body {
-  			margin: 0;
-  			padding: 0;
-  			background: whitesmoke;
-  			font-family: "Noto Sans", sans-serif;
-  			color: #3d3d3d;
-  		}
-
-      	section {
-  			width: 960px;
-  			margin: 20px auto;
-  		}
-
-  		h1 {
-  			width: 960px;
-  			margin: 20px auto;
-  			font-family: "Lora", serif;
-  			letter-spacing: .04em;
-  		}
-
-  		h2 {
-  			font-family: "Lora", serif;
-  			letter-spacing: .04em;
-  		}
-
-  		p {
-  			font-size: 1em;
-  			line-height: 1.5em;
-  		}
-
-  		a {
-  			color: #005daa;
-        		font-weight: bold;
-  			text-decoration: none;
-  		}
-
-  		a:hover {
-  			text-decoration: underline;
-  		}
-
-  		ul {
-  			padding-left: 20px;
-  		}
-
-  		li {
-  			margin: 10px 0
-  		}
-
-  		#map {
-  		  width: 960px;
-  		  height: 540px;
-  		  margin: 10px auto;
-  		  border: 2px solid #d3d3d3;
-  		}
-  	</style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: whitesmoke;
+            font-family: "Noto Sans", sans-serif;
+            color: #3d3d3d;
+        }
+        
+        section {
+            width: 960px;
+            margin: 20px auto;
+        }
+        
+        h1 {
+            width: 960px;
+            margin: 20px auto;
+            font-family: "Lora", serif;
+            letter-spacing: .04em;
+        }
+        
+        h2 {
+            font-family: "Lora", serif;
+            letter-spacing: .04em;
+        }
+        
+        p {
+            font-size: 1em;
+            line-height: 1.5em;
+        }
+        
+        a {
+            color: #005daa;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin: 10px 0
+        }
+        
+        #map {
+            width: 960px;
+            height: 540px;
+            margin: 10px auto;
+            border: 2px solid #d3d3d3;
+        }
+    </style>
 </head>
 
 <body>
-  <h1>Iguana Restaurants</h1>
+    <h1>Iguana Restaurants</h1>
 
- <div id='map'></div>
+    <div id='map'></div>
 
- <section>
-   <h2>What is our distance from The Red Iguana Restaurant?</h2>
+    <section>
+        <h2>What is our distance from The Red Iguana Restaurant?</h2>
 
-   <p>Map authored by John Davis</p>
+        <p>Map authored by John Davis</p>
 
-   <p>When the user clicks on the map, a marker appears with a popup notification indicating your distance in kilometers, from the <a href="http://rediguana.com/">Red Iguana Restaurant</a> in <a href="http://www.slcgov.com/">Salt Lake City</a>, Utah. You can also drag that marker to a different location where the popup will inform you of your new location and distance from the Red Iguana Restaurant. Make sure you plan your day accordingly to get back in time for dinner. I hear the <a href="http://rediguana.squarehook.com/classics">Red Iguana classics</a> are delightful!
-     
-     
-    </p>
+        <p>When the user clicks on the map, a marker appears with a popup notification indicating your distance in kilometers, from the <a href="http://rediguana.com/">Red Iguana Restaurant</a> in <a href="http://www.slcgov.com/">Salt Lake City</a>, Utah. You can also drag that marker to a different location where the popup will inform you of your new location and distance from the Red Iguana Restaurant. Make sure you plan your day accordingly to get back in time for dinner. I hear the <a href="http://rediguana.squarehook.com/classics">Red Iguana classics</a> are delightful!
 
- </section>
+
+        </p>
+
+    </section>
 
     <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-  	<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
     <script>
+        var options = {
+            center: [40.74, -110.61],
+            zoom: 7
+        }
 
-    var options = {
-        center: [40.74,-110.61],
-        zoom: 7
-    }
-    
-    var map = L.map('map', options);
+        var map = L.map('map', options);
 
-    var tiles = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	maxZoom: 19,
-	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-});
+        var tiles = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        });
         map.addLayer(tiles);
 
-    var redIguana = L.latLng(40.7718,-111.9124);
+        var redIguana = L.latLng(40.7718, -111.9124);
 
-    L.marker(redIguana, {
-        icon : L.icon({
-            iconUrl: 'red_iguana.png',
-            iconSize: [40, 36]
-        })
-    }).addTo(map);
-        
-    var cityMarker = map.on('click', function(e){
+        L.marker(redIguana, {
+            icon: L.icon({
+                iconUrl: 'red_iguana.png',
+                iconSize: [40, 36]
+            })
+        }).addTo(map);
 
-        console.log(e.latlng);
- 
-    var distancedrag = e.latlng.distanceTo(redIguana);
-        distancedrag = (distancedrag / 1000);
-        console.log(distancedrag.toLocaleString());
-    
-    var popup = "<b>" + distancedrag.toLocaleString() + " " +
-        "km from Red Iguana"
-        
-    var cityLoc = L.marker(e.latlng, {
-                    draggable: true
-                }).addTo(map).bindPopup(popup).openPopup();
+        var cityMarker = map.on('click', function (e) {
 
-        cityLoc.on("dragend", function(e) {
-            
-            cityLoc.getPopup(popup).setContent(popup).openPopup();
-            console.log(e);
-    });
-});
-        
-        
-        
-        
+            console.log(e.latlng);
+
+            var distancedrag = e.latlng.distanceTo(redIguana);
+            distancedrag = (distancedrag / 1000);
+            console.log(distancedrag.toLocaleString());
+
+            var popup = "<b>" + distancedrag.toLocaleString() + " " +
+                "km from Red Iguana"
+
+            var cityLoc = L.marker(e.latlng, {
+                draggable: true
+            }).addTo(map).bindPopup(popup).openPopup();
+
+            cityLoc.on("dragend", function (e) {
+                console.log(e.target.getlatLng());
+                var distancedrag = e.target.getlatLng().distanceTo(redIguana);
+            }).bindPopup(popup);
+
+            cityLoc.getPopup(popup).setContent(popup).openPopup(popup);
+
+        });
     </script>
 
 </body>
