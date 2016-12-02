@@ -86,6 +86,8 @@
         return b.properties.capacity_mw - a.properties.capacity_mw;
     });
         
+    
+        
       L.geoJson(plants, {
           pointToLayer: function(feature,latlng) {
               return L.circleMarker(latlng, {
@@ -95,6 +97,11 @@
                  fillOpacity: .8,
                  radius: getRadius(feature.properties.capacity_mw)
               });
+          },
+          filter: function(feature, layer) {
+              if(feature.properties.fuel_source.Solar) {
+                  return feature;
+              }
           },
           onEachFeature: function(feature, layer) {
                 layer.on("mouseover", function() {
@@ -107,7 +114,8 @@
                         fillColor: "white"
                     });
                 });
-                console.log(layer);
+                layer.bindPopup("<b>" + feature.properties.plant_name + "</b><br>" + "Mega Watt Capacity:" + " " + feature.properties.fuel_source["Solar"]);
+              console.log(layer);
             }
       }).addTo(map);
 
