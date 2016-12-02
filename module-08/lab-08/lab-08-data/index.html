@@ -91,9 +91,9 @@
       L.geoJson(plants, {
           pointToLayer: function(feature,latlng) {
               return L.circleMarker(latlng, {
-                 color: 'blue',
-                 weight: 1,
-                 fillColor: 'white',
+                 color: 'white',
+                 weight: 1.5,
+                 fillColor: 'navy',
                  fillOpacity: .8,
                  radius: getRadius(feature.properties.capacity_mw)
               });
@@ -111,7 +111,7 @@
                 });
                 layer.on("mouseout", function() {
                     layer.setStyle({
-                        fillColor: "white"
+                        fillColor: "navy"
                     });
                 });
                 layer.bindPopup("<b>" + feature.properties.plant_name + "</b><br>" + "Mega Watt Capacity:" + " " + feature.properties.fuel_source["Solar"]);
@@ -121,7 +121,7 @@
 
         function getRadius(area) {
             var radius = Math.sqrt(area/Math.PI);
-            return radius * .6;
+            return radius * .8;
         }
         
         
