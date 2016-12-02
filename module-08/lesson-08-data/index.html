@@ -63,8 +63,6 @@
 
       // build your Leaflet map here!
 
-    
-     
     var map = L.map("map", {
         center: [36, -94],
         zoom: 4
@@ -89,12 +87,18 @@
         L.geoJson(plants, {
             pointToLayer: function(feature, latlng) {
                 return L.circleMarker(latlng, {
-                    color: "orange",
+                    color: "purple",
                     weight: 1,
-                    fillColor: "yellow",
+                    fillColor: "plum",
                     fillOpacity: 1,
                     radius: 2
                 });
+            },
+            filter: function(feature, layer) {
+              if(feature.properties.capacity_mw < 1000 &&
+                  feature.properties.fuel_source.Petroleum) {
+                  return feature;
+              }
             }
         }).addTo(map);
         
