@@ -17,27 +17,33 @@
             font-family: Lato, sans-serif;
             color: #0D0000;
         }
+        
         header {
             padding: 6px 10%;
         }
+        
         h1 {
             display: inline-block;
             margin-right: 20px;
             color: #001323;
         }
+        
         h2 {
             display: inline-block;
             color: #001323;
         }
+        
         #map {
             width: 80%;
             height: 540px;
             margin: 10px auto;
         }
+        
         footer {
             padding: 6px 10%;
             width: 80%;
         }
+        
         p {
             font-size: 1em;
             color: #001323;
@@ -60,108 +66,106 @@
 
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
     <script>
+        // build your Leaflet map here!
 
-      // build your Leaflet map here!
-
-    var places = {
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Munchen",
-        "size": "310.43 "
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
+        var places = {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "marker-color": "#7e7e7e",
+                        "marker-size": "medium",
+                        "marker-symbol": "",
+                        "name": "Munchen",
+                        "size": "310.43 "
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
           11.575813293457031,
           48.13859959165873
         ]
-      }
+                    }
     },
-    {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Innsbruck",
-        "size": "104.91 "
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "marker-color": "#7e7e7e",
+                        "marker-size": "medium",
+                        "marker-symbol": "",
+                        "name": "Innsbruck",
+                        "size": "104.91 "
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
           11.393423080444336,
           47.267872978055415
         ]
-      }
+                    }
     },
-    {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Venezia",
-        "size": "414.57 "
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "marker-color": "#7e7e7e",
+                        "marker-size": "medium",
+                        "marker-symbol": "",
+                        "name": "Venezia",
+                        "size": "414.57 "
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
           12.334942817687988,
           45.43842360056096
         ]
-      }
+                    }
     },
-    {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Luzurn",
-        "size": "29.04 "
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "marker-color": "#7e7e7e",
+                        "marker-size": "medium",
+                        "marker-symbol": "",
+                        "name": "Luzurn",
+                        "size": "29.04 "
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
           8.3076810836792,
           47.05243488517776
         ]
-      }
+                    }
     }
   ]
-};
-     
-    var map = L.map("map", {
-        center: [46.84127, 10.552783],
-        zoom: 7
-    });
-         
-    var tiles = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}', {
-	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-	subdomains: 'abcd',
-	minZoom: 0,
-	maxZoom: 18,
-	ext: 'png'
-});
-        
-    tiles.addTo(map);
-        
-    var placesLeaflet = L.geoJson(places, {
-        pointToLayer: function(feature, latlng) {
-            console.log(feature.properties);
-            return L.circle(latlng, feature.properties.size * 100);
-        }
-    }).addTo(map);
-        
+        };
+
+        var map = L.map("map", {
+            center: [46.84127, 10.552783],
+            zoom: 7
+        });
+
+        var tiles = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}', {
+            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            subdomains: 'abcd',
+            minZoom: 0,
+            maxZoom: 18,
+            ext: 'png'
+        });
+
+        tiles.addTo(map);
+
+        var placesLeaflet = L.geoJson(places, {
+            pointToLayer: function (feature, latlng) {
+                console.log(feature.properties);
+                return L.circle(latlng, feature.properties.size * 100);
+            }
+        }).addTo(map);
+
         console.log(places);
         console.log(placesLeaflet);
-        
     </script>
 
 </body>

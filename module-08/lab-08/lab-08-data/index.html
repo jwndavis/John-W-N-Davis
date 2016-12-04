@@ -17,27 +17,33 @@
             font-family: Lato, sans-serif;
             color: #0D0000;
         }
+        
         header {
             padding: 6px 10%;
         }
+        
         h1 {
             display: inline-block;
             margin-right: 20px;
             color: #001323;
         }
+        
         h2 {
             display: inline-block;
             color: #001323;
         }
+        
         #map {
             width: 80%;
             height: 540px;
             margin: 10px auto;
         }
+        
         footer {
             padding: 6px 10%;
             width: 80%;
         }
+        
         p {
             font-size: 1em;
             color: #001323;
@@ -58,76 +64,71 @@
         <p>This map shows a distribution of proportional symbol size location markers for Power Plants across the US generating Solar power. By clicking on each marker, you can discover how many megawatts of Solar power each plant produces.</p>
     </footer>
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
-    
+
     <script>
         // build your Leaflet map here!
-        
-      var map = L.map('map', {
-          center: [36,-94],
-          zoom: 4,
-      });
 
-      var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
-          subdomains: 'abcd',
-          maxZoom: 19
-      });
+        var map = L.map('map', {
+            center: [36, -94],
+            zoom: 4,
+        });
 
-      tiles.addTo(map);
+        var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+            subdomains: 'abcd',
+            maxZoom: 19
+        });
 
+        tiles.addTo(map);
     </script>
-    
+
     <script src="power-plants.js"></script>
-    
+
     <script>
         // custom JavaScript goes here
-        
-    plants.features.sort(function(a, b) {
-        return b.properties.capacity_mw - a.properties.capacity_mw;
-    });
-        
-    
-        
-      L.geoJson(plants, {
-          pointToLayer: function(feature,latlng) {
-              return L.circleMarker(latlng, {
-                 color: 'white',
-                 weight: 1,
-                 fillColor: 'coral',
-                 fillOpacity: .6,
-                 radius: getRadius(feature.properties.capacity_mw * 1.5)
-              });
-          },
-          filter: function(feature, layer) {
-              if(feature.properties.fuel_source.Solar) {
-                  return feature;
-              }
-          },
-          onEachFeature: function(feature, layer) {
-                layer.on("mouseover", function() {
+
+        plants.features.sort(function (a, b) {
+            return b.properties.capacity_mw - a.properties.capacity_mw;
+        });
+
+
+
+        L.geoJson(plants, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, {
+                    color: 'white',
+                    weight: 1,
+                    fillColor: 'coral',
+                    fillOpacity: .6,
+                    radius: getRadius(feature.properties.capacity_mw * 1.5)
+                });
+            },
+            filter: function (feature, layer) {
+                if (feature.properties.fuel_source.Solar) {
+                    return feature;
+                }
+            },
+            onEachFeature: function (feature, layer) {
+                layer.on("mouseover", function () {
                     layer.setStyle({
                         fillColor: "navy"
                     });
                 });
-                layer.on("mouseout", function() {
+                layer.on("mouseout", function () {
                     layer.setStyle({
                         fillColor: "coral"
                     });
                 });
-                layer.bindPopup("<b>" + feature.properties.plant_name + 
-                "<br>" + "Solar Capacity:" + " " + feature.properties.fuel_source.Solar + " " + "MW" +"</b>");
-              console.log(layer);
+                layer.bindPopup("<b>" + feature.properties.plant_name +
+                    "<br>" + "Solar Capacity:" + "</b>" + " " + feature.properties.fuel_source.Solar + " " + "MW");
+                console.log(layer);
             }
-      }).addTo(map);
+        }).addTo(map);
 
         function getRadius(area) {
-            var radius = Math.sqrt(area/Math.PI);
-            return radius * 1.2;
+            var radius = Math.sqrt(area / Math.PI);
+            return radius * 1;
         }
-        
-        
-        
-        
     </script>
 
 </body>
