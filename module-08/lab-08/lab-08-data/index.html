@@ -47,15 +47,15 @@
 
 <body>
     <header>
-        <h1>Wasteful Issues</h1>
-        <h2>Proportional Symbol Sizes of US Power Plants</h2>
+        <h1>Electric Issues</h1>
+        <h2>Proportional Symbol Sizes of US Solar Power Plants</h2>
     </header>
 
     <div id='map'></div>
 
     <footer>
         <p>Map authored by John Davis</p>
-        <p>Additional information about the data and map goes here.</p>
+        <p>This map shows a distribution of proportional symbol size location markers for Power Plants across the US generating Solar power. By clicking on each marker, you can discover how many megawatts of Solar power each plant produces.</p>
     </footer>
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
     
@@ -92,10 +92,10 @@
           pointToLayer: function(feature,latlng) {
               return L.circleMarker(latlng, {
                  color: 'white',
-                 weight: 1.5,
-                 fillColor: 'navy',
-                 fillOpacity: .8,
-                 radius: getRadius(feature.properties.capacity_mw)
+                 weight: 1,
+                 fillColor: 'coral',
+                 fillOpacity: .6,
+                 radius: getRadius(feature.properties.capacity_mw * 1.5)
               });
           },
           filter: function(feature, layer) {
@@ -106,22 +106,23 @@
           onEachFeature: function(feature, layer) {
                 layer.on("mouseover", function() {
                     layer.setStyle({
-                        fillColor: "coral"
+                        fillColor: "navy"
                     });
                 });
                 layer.on("mouseout", function() {
                     layer.setStyle({
-                        fillColor: "navy"
+                        fillColor: "coral"
                     });
                 });
-                layer.bindPopup("<b>" + feature.properties.plant_name + "</b><br>" + "Mega Watt Capacity:" + " " + feature.properties.fuel_source["Solar"]);
+                layer.bindPopup("<b>" + feature.properties.plant_name + 
+                "<br>" + "Solar Capacity:" + " " + feature.properties.fuel_source.Solar + " " + "MW" +"</b>");
               console.log(layer);
             }
       }).addTo(map);
 
         function getRadius(area) {
             var radius = Math.sqrt(area/Math.PI);
-            return radius * .8;
+            return radius * 1.2;
         }
         
         
