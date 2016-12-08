@@ -116,12 +116,12 @@
             }
         }
     }).addTo(map);        
-    }
+}
         
        var sourcesLabels = {
-        "<b style='color:#1f78b4'>Hydro</b>":hydroLayer,
-        "<b style='color:#a6cee3'>Wind</b>":windLayer,
-        "<b style='color:#ffff99; text-shadow: 0px 0px 1px #333;'>Solar</b>":solarLayer
+        "<b style='color:#1f78b4'>Hydro</b>": geoJsonLayers.hydroLayer,
+        "<b style='color:#a6cee3'>Wind</b>":geoJsonLayers.windLayer,
+        "<b style='color:#ffff99'>Solar</b>":geoJsonLayers.solarLayer
     }
     L.control.layers(null, sourcesLabels, { collapsed:false }).addTo(map);
         
@@ -134,7 +134,7 @@
    //     });
         
         map.on('click', function(e) {
-    hydroLayer.eachLayer(function(layer) {
+    geoJsonLayers[layer].eachLayer(function(layer) {
         var distance = e.latlng.distanceTo(layer.getLatLng())/1000; //km dist
         
         if(distance > 500) {

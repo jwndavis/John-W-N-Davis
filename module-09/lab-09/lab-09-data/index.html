@@ -119,17 +119,16 @@
         }
         
         var sourcesLabels = {
-            "Natural_Gas": geoJsonLayers.natural_gasLayer,
-            "Geothermal": geoJsonLayers.geothermalLayer,
-            "Wood": geoJsonLayers.woodLayer
+            "<b style='color:#8fbc8f'>Natural Gas</b>": geoJsonLayers.natural_gasLayer,
+            "<b style='color:#f8f8ff'>Geothermal</b>": geoJsonLayers.geothermalLayer,
+            "<b style='color:#008000'>Wood</b>": geoJsonLayers.woodLayer
         }
 
         L.control.layers(null, sourcesLabels, {collapsed: false}).addTo(map);
         
         map.on('click', function(e) {
-            console.log(e.latlng)
-            .eachLayer(function(layer) {
-                var distance = e.latlng.distanceTo(layer.getLatLng()) / 500;
+            geoJsonLayers[layer].eachLayer(function(layer) {
+                var distance = e.latlng.distanceTo(layer.getLatLng()) / 1000;
                 
                 if(distance > 500) {
                     layer.setStyle({
@@ -142,7 +141,7 @@
                         fill: true
                     });
                     layer.bindPopup("<b>" + feature.properties.plant_name +
-                                    "<br>" + feature.properties.fuel_source +
+                                    "<br>" + "hi there" +
                                     "<br>" + distance.toLocaleString() +
                                     "km </b> <br> from the click point.");
                 }
