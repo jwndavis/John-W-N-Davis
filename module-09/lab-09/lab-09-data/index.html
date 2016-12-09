@@ -47,7 +47,7 @@
 
 <body>
     <header>
-        <h1>Three Types of Power</h1>
+        <h1>Power Plants Across the US</h1>
         <h2>Harnessing the Energy of Geothermal, Wind, and Nuclear Power</h2>
     </header>
 
@@ -55,7 +55,8 @@
 
     <footer>
         <p>Map authored by John Davis</p>
-        <p>Additional information about the data and map goes here.</p>
+        <p>This map shows the distribution of "<a href="https://geothermal.org/what.html">Geothermal</a>, "<a href="http://windeis.anl.gov/guide/basics/">Wind</a>, and "<a href="https://en.wikipedia.org/wiki/Nuclear_power">Nuclear</a> power plants across the United States as proportional symbols based on the amount of mega watts of power they produce.</p>
+        <p>By clicking on the map, you will see those facilities within a 500 kilometer radius of where you clicked. Clicking each circle marker within that area would allow you to learn more about that specific facility.</p>
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
@@ -97,7 +98,7 @@
         var commonStyles = {
             weight: 1,
             stroke: 1,
-            fillOpacity: .6
+            fillOpacity: .4
         }
         
         var layerInfo = {
