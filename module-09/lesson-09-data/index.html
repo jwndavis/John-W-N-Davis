@@ -3,7 +3,7 @@
 
 <head>
     <meta charset=utf-8 />
-    <title>Lab 09 Template</title>
+    <title>US Power Plants</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
@@ -47,15 +47,15 @@
 
 <body>
     <header>
-        <h1>Map Title</h1>
-        <h2>Map Subtitle</h2>
+        <h1>Power Plants Across the US</h1><br>
+        <h2>Three Types of Power: Water, Wind, Sun</h2>
     </header>
 
     <div id='map'></div>
 
     <footer>
-        <p>Map authored by YOUR NAME</p>
-        <p>Additional information about the data and map goes here.</p>
+        <p>Map authored by John Davis</p>
+        <p>This map shows the distribution of Hydro, Wind, and Solar power plants across the United States. When you click on the map, you will see those facilities within a 500 kilometer area of where you clicked. You could then click each circle marker for a certain power plant and see how far away that place is from where you clicked.</p>
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
@@ -93,7 +93,7 @@
     var layerInfo = {
     hydroLayer: {source:"Hydro", color:'#1f78b4'},
     windLayer: {source:"Wind", color:'#a6cee3'},
-    solarLayer: {source:"Solar", color:'ffff99'}
+    solarLayer: {source:"Solar", color:'#ffff99'}
 };    
         
     var geoJsonLayers = {};
@@ -121,7 +121,7 @@
        var sourcesLabels = {
         "<b style='color:#1f78b4'>Hydro</b>": geoJsonLayers.hydroLayer,
         "<b style='color:#a6cee3'>Wind</b>":geoJsonLayers.windLayer,
-        "<b style='color:#ffff99'>Solar</b>":geoJsonLayers.solarLayer
+        "<b style='color:#ffff99; text-shadow: 0px 0px 1px #333;'>Solar</b>":geoJsonLayers.solarLayer
     }
     L.control.layers(null, sourcesLabels, { collapsed:false }).addTo(map);
         
@@ -134,7 +134,10 @@
    //     });
         
         map.on('click', function(e) {
-    geoJsonLayers[layer].eachLayer(function(layer) {
+            
+            for(var layer in layerInfo) {
+            
+            geoJsonLayers[layer].eachLayer(function(layer) {
         var distance = e.latlng.distanceTo(layer.getLatLng())/1000; //km dist
         
         if(distance > 500) {
@@ -151,6 +154,7 @@
                            "km </b><br> from the click point.");
         }
     });
+    }
 });
     </script>
 

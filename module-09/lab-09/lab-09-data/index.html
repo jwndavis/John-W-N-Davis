@@ -3,7 +3,7 @@
 
 <head>
     <meta charset=utf-8 />
-    <title>Lab 09 Template</title>
+    <title>Specific Types of US Power Plants</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
@@ -47,20 +47,21 @@
 
 <body>
     <header>
-        <h1>Map Title</h1>
-        <h2>Map Subtitle</h2>
+        <h1>Three Types of Power</h1>
+        <h2>Harnessing the Energy of Geothermal, Wind, and Nuclear Power</h2>
     </header>
 
     <div id='map'></div>
 
     <footer>
-        <p>Map authored by YOUR NAME</p>
+        <p>Map authored by John Davis</p>
         <p>Additional information about the data and map goes here.</p>
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
     <script src="power-plants.js"></script>
     <script>
+
 
        var map = L.map('map', {
           center: [36,-94],
@@ -75,6 +76,15 @@
 
       tiles.addTo(map);
 
+        var radiusCircle = L.circle([0, 0], 500000, {
+            fillColor: "white",
+            fillOpacity: .1,
+            color: "yellow",
+            opacity: .3,
+            stroke: false,
+            weight: 3,
+        }).addTo(map);
+        
         plants.features.sort(function(a, b) {
         return b.properties.capacity_mw - a.properties.capacity_mw;
     });
@@ -91,43 +101,48 @@
         }
         
         var layerInfo = {
-            natural_gasLayer: {source:["Natural Gas"], color: '#8fbc8f'},
+            nuclearLayer: {source:["Nuclear"], color: '#f08080'},
             geothermalLayer: {source:["Geothermal"], color: '#f8f8ff'},
-            woodLayer: {source:["Wood"], color: '#008000'}
+            windLayer: {source:["Wind"], color: '#00bfff'}
         }
         
         var geoJsonLayers = {};
         
-        for(var layer in layerInfo) {
-            geoJsonLayers[layer] = L.geoJson(plants, {
+        for(var l in layerInfo) {
+            geoJsonLayers[l] = L.geoJson(plants, {
                 pointToLayer: function(feature,latlng) {
                     return L.circleMarker(latlng, commonStyles);
                 },
                 filter: function(feature) {
-                    if(feature.properties.fuel_source[layerInfo[layer].source]) {
+                    if(feature.properties.fuel_source[layerInfo[l].source]) {
                         return feature;
                     }
                 },
                 style: function(feature) {
                     return {
-                        color: layerInfo[layer].color,
-                        fillColor: layerInfo[layer].color,
-                        radius: getRadius(feature.properties.fuel_source[layerInfo[layer].source])
+                        color: layerInfo[l].color,
+                        fillColor: layerInfo[l].color,
+                        radius: getRadius(feature.properties.fuel_source[layerInfo[l].source])
                     }
                 }
             }).addTo(map);
         }
         
         var sourcesLabels = {
-            "<b style='color:#8fbc8f'>Natural Gas</b>": geoJsonLayers.natural_gasLayer,
-            "<b style='color:#f8f8ff'>Geothermal</b>": geoJsonLayers.geothermalLayer,
-            "<b style='color:#008000'>Wood</b>": geoJsonLayers.woodLayer
+            "<b style='color:#f8f8ff; text-shadow: 0px 0px 1px #333;'>Geothermal Sites</b>": geoJsonLayers.geothermalLayer,
+            "<b style='color:#00bfff'>Wind Farms</b>": geoJsonLayers.windLayer,
+            "<b style='color:#f08080'>Nuclear Facilities</b>": geoJsonLayers.nuclearLayer
         }
 
         L.control.layers(null, sourcesLabels, {collapsed: false}).addTo(map);
         
         map.on('click', function(e) {
-            geoJsonLayers[layer].eachLayer(function(layer) {
+            
+            radiusCircle.setLatLng(e.latlng);
+            
+            for(var l in layerInfo) {
+            
+            geoJsonLayers[l].eachLayer(function(layer) {
                 var distance = e.latlng.distanceTo(layer.getLatLng()) / 1000;
                 
                 if(distance > 500) {
@@ -140,13 +155,24 @@
                         stroke: true,
                         fill: true
                     });
-                    layer.bindPopup("<b>" + feature.properties.plant_name +
-                                    "<br>" + "hi there" +
-                                    "<br>" + distance.toLocaleString() +
-                                    "km </b> <br> from the click point.");
+                    
+                    var props = layer.feature.properties;
+                    
+                    var content = "<b>" + props.plant_name + "<br>";
+                    
+                    content += "<b>" + layerInfo[l].source + ":" + "</b>" + " " +
+                    props.fuel_source[layerInfo[l].source].toLocaleString() +
+                    "</b>" + " " + "Mega Watts";
+                    
+                    content += "<br>" + "<b>" + distance.toLocaleString() +
+                        "</b>" + " " + "kilometers <br> from the click point."
+                    layer.bindPopup(content);
                 }
             });
-        });
+        }
+    });
+        
+        
         
         
         
