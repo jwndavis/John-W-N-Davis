@@ -173,31 +173,25 @@
         }
     });
         
+        map.on('dblclick', function(e) {
+            
+            for(var l in layerInfo) {
+            
+            geoJsonLayers[l].eachLayer(function(layer) {
+            var distance = e.latlng.distanceTo(layer.getLatLng()) / 1000;
+            if(distance > 500) {
+                layer.setStyle({
+                        stroke: true,
+                        fill: true,
+                        center: [36,-94],
+                        zoom: 4,
+                    });
+                }
+        })
+    }
+});
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    
         
     </script>
 
