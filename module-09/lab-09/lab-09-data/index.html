@@ -56,7 +56,7 @@
     <footer>
         <p>Map authored by John Davis</p>
         <p>This map shows the distribution of "<a href="https://geothermal.org/what.html">Geothermal</a>, "<a href="http://windeis.anl.gov/guide/basics/">Wind</a>, and "<a href="https://en.wikipedia.org/wiki/Nuclear_power">Nuclear</a> power plants across the United States as proportional symbols based on the amount of mega watts of power they produce.</p>
-        <p>By clicking on the map, you will see those facilities within a 500 kilometer radius of where you clicked. Clicking each circle marker within that area would allow you to learn more about that specific facility.</p>
+        <p>By clicking on the map, you will see those facilities within a 500 kilometer radius of where you clicked. Clicking each circle marker within that area would allow you to learn more about that specific facility. By double clicking, you can view all the facilities once more.</p>
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
@@ -102,8 +102,8 @@
         }
         
         var layerInfo = {
+            geothermalLayer: {source:["Geothermal"], color: '#ffffff'},
             nuclearLayer: {source:["Nuclear"], color: '#f08080'},
-            geothermalLayer: {source:["Geothermal"], color: '#f8f8ff'},
             windLayer: {source:["Wind"], color: '#00bfff'}
         }
         
@@ -130,7 +130,7 @@
         }
         
         var sourcesLabels = {
-            "<b style='color:#f8f8ff; text-shadow: 0px 0px 1px #333;'>Geothermal Sites</b>": geoJsonLayers.geothermalLayer,
+            "<b style='color:#ffffff; text-shadow: 1px 1px 1px #333;'>Geothermal Sites</b>": geoJsonLayers.geothermalLayer,
             "<b style='color:#00bfff'>Wind Farms</b>": geoJsonLayers.windLayer,
             "<b style='color:#f08080'>Nuclear Facilities</b>": geoJsonLayers.nuclearLayer
         }
@@ -176,7 +176,7 @@
         map.on('dblclick', function(e) {
             
             for(var l in layerInfo) {
-            
+               
             geoJsonLayers[l].eachLayer(function(layer) {
             var distance = e.latlng.distanceTo(layer.getLatLng()) / 1000;
             if(distance > 500) {
